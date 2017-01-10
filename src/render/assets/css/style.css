@@ -1,0 +1,28 @@
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+}
+:root {
+    --color: hsl(0,0%,22%);
+    --color-subtle: hsl(0,0%,44%);
+    --color-strong: hsl(0,0%,11%);
+    --color-link: hsl(0,0%,22%);
+    --color-border: hsl(0,0%,88%);
+    --color-bg: hsl(0,0%,96%);
+    --color-accent: black;
+}
+html,body{height: 100%;}
+html{
+    font-size: 14px;
+    line-height: 1.5;
+    overflow: hidden;
+    color: var(--color);
+    background-color: #fff;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+}
+
