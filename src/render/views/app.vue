@@ -26,8 +26,8 @@
             <div class="section" :class="select=='index'?'active':''"><indexView></indexView></div>
             <div class="section" :class="select=='h-txt'?'active':''"><hashtxtView></hashtxtView></div>
             <div class="section" :class="select=='h-file'?'active':''"><indexView></indexView></div>
-            <div class="section" :class="select=='z-txt'?'active':''"><indexView></indexView></div>
-            <div class="section" :class="select=='z-file'?'active':''"><indexView></indexView></div>
+            <div class="section" :class="select=='z-txt'?'active':''"><mintxtView></mintxtView></div>
+            <div class="section" :class="select=='z-file'?'active':''"><minfileView></minfileView></div>
             <div class="section" :class="select=='qr-g'?'active':''"><indexView></indexView></div>
             <div class="section" :class="select=='qr-de'?'active':''"><indexView></indexView></div>
         </div>
@@ -37,7 +37,8 @@
 <script>
     import '../assets/css/normalize.css';
     import '../assets/css/style.css';
-    import '../assets/fa/css/font-awesome.css';
+    //import '../assets/fa/css/font-awesome.css';
+    import '../assets/fa/less/font-awesome.less';
 
     import config from '../assets/config';
 
@@ -46,7 +47,9 @@
     export default {
         components: {
             "indexView": require('./index.vue'),
-            "hashtxtView": require('./hash/txt.vue')
+            "hashtxtView": require('./hash/txt.vue'),
+            "mintxtView": require('./min/txt.vue'),
+            "minfileView":require('./min/file.vue')
         },
         data() {
             return {

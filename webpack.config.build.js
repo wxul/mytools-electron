@@ -12,6 +12,7 @@ var ex = {
     },
     output: {
         path: APP_PATH,
+        publicPath:'./release/',
         filename: '[name].js',
         chunkFilename: '[name],[chunkhash].min.js'
     },
@@ -27,11 +28,14 @@ var ex = {
             test: /\.css$/,
             loader: 'style!css'
         }, {
+            test: /\.less$/,
+            loader: 'style!css!less'
+        }, {
             test: /\.(png|jpe?g|gif)(\?\S*)?$/,
             loader: 'file-loader?limit=8192&name=[name].[hash:8].[ext]'
         }, {
-            test: /\.(eot|svg|ttf|woff|woff2|md)(\?\S*)?$/,
-            loader: 'file-loader'
+            test: /\.(otf|eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+            loader: 'file-loader?name=[name].[hash:8].[ext]'
         }]
     },
     plugins: [
@@ -41,14 +45,7 @@ var ex = {
             'process.env': {
                 NODE_ENV: '"production"'
             }
-        }),
-        new webpack.HotModuleReplacementPlugin(),
-        new CopyWebpackPlugin([
-            { from: path.resolve(SRC_PATH, 'main.js'), to: 'main.js' },
-            { from: path.resolve(SRC_PATH, 'index.html'), to: 'index.html' },
-            { from: path.resolve(SRC_PATH, 'package.json'), to: 'package.json' },
-            { from: path.resolve(SRC_PATH, 'readme.md'), to: 'readme.md' }
-        ])
+        })
     ]
 }
 
