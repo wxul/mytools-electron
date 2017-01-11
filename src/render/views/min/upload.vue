@@ -23,11 +23,15 @@
             
             </li>
         </transition-group>
-        <el-button size="small" type="primary" @click="submit" :disabled="upload">{{upload?"正在处理":"DO IT！"}}</el-button>
+        <el-button size="small" type="primary" @click="submit" :disabled="iszip">{{upload?"正在处理":"DO IT！"}}</el-button>
     </div>
 </template>
 
 <script>
+    import config from '../../assets/config';
+    const log = config.log;
+
+    const ipc = require('electron').ipcRenderer;
     export default {
         name: 'my-upload',
         props: {
@@ -62,7 +66,8 @@
                 upload: false,
                 dragOver: false,
                 files: [],
-                progress: 0
+                progress: 0,
+                iszip: false
             }
         },
         methods: {
@@ -92,7 +97,10 @@
             },
             onDrop(e) {
                 this.dragOver = false;
-                this.addFile(e.dataTransfer.files);
+                var files = [].filter.call(e.dataTransfer.files, (e, i) => {
+                    return e.type == "application/javascript";
+                });
+                this.addFile(files);
             },
             addFile(files) {
                 this.files = this.files.concat([...files]);
@@ -113,6 +121,13 @@
                 });
                 console.log(f);
                 //this.onSubmit(this.files);
+                ipc.on("file-zipped", (e, m) => {
+                    this.iszip = false;
+                    this.onSuccess(m);
+                });
+                this.iszip = true;
+                ipc.send("file-zip", f);
+
             }
         }
     };

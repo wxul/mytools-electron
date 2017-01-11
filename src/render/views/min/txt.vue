@@ -1,5 +1,5 @@
 <template>
-    <div class="txt">
+    <div class="min-txt">
         <el-row :gutter="20">
             <el-col :span="19" :offset="1">
                 <el-form :model="form" label-width="80px">
@@ -49,5 +49,7 @@
 </script>
 
 <style>
-
+    .min-txt{
+        padding-top: 20px;
+    }
 </style>

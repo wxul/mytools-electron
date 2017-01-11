@@ -25,7 +25,7 @@
         mounted() {
             var _ = this;
             ipc.on("index-md", (e, m) => {
-                log(m);
+                //log(m);
                 _.md = m;
             });
             /*

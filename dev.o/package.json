@@ -4,6 +4,7 @@
     "description": "",
     "main": "main.js",
     "scripts": {
+        "installar": "npm install --registry=https://registry.npm.taobao.org",
         "devstart": "electron dev.o/.",
         "devbuild": "webpack --config ./webpack.config.dev.js --watch",
         "build": "webpack --config ./webpack.config.build.js",

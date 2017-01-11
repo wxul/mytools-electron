@@ -13,7 +13,7 @@ var ex = {
     },
     output: {
         path: APP_PATH,
-        publicPath:'./release/',
+        publicPath: './release/',
         filename: '[name].js',
         chunkFilename: '[name],[chunkhash].min.js'
     },
@@ -37,6 +37,15 @@ var ex = {
         }, {
             test: /\.(eot|svg|ttf|woff|woff2|md)(\?\S*)?$/,
             loader: 'file-loader'
+        }, {
+            test: require.resolve("./src/source/llqrcode.js"),
+            loader: "exports?qrcode"
+        }, {
+            test: require.resolve("./src/source/qrcanvas.js"),
+            loader: "exports?createQRImage"
+        }, {
+            test: require.resolve("./src/source/qrcode.js"),
+            loader: "exports?QRCode&QRErrorCorrectLevel"
         }]
     },
     plugins: [

@@ -19,17 +19,17 @@
             </el-menu>
             <footer>
                 <a class="about" href="#">关于</a>
-                <a class="github" href="#"><i class="fa fa-github"></i> Github <i class="fa fa-code-fork"></i></a>
+                <a data-openexternal="true" class="github" href="https://github.com/wxul/mytools-electron"><i class="fa fa-github"></i> Github <i class="fa fa-code-fork"></i></a>
             </footer>
         </div>
         <div class="main" id="main">
             <div class="section" :class="select=='index'?'active':''"><indexView></indexView></div>
             <div class="section" :class="select=='h-txt'?'active':''"><hashtxtView></hashtxtView></div>
-            <div class="section" :class="select=='h-file'?'active':''"><indexView></indexView></div>
+            <div class="section" :class="select=='h-file'?'active':''"><hashfileView></hashfileView></div>
             <div class="section" :class="select=='z-txt'?'active':''"><mintxtView></mintxtView></div>
             <div class="section" :class="select=='z-file'?'active':''"><minfileView></minfileView></div>
-            <div class="section" :class="select=='qr-g'?'active':''"><indexView></indexView></div>
-            <div class="section" :class="select=='qr-de'?'active':''"><indexView></indexView></div>
+            <div class="section" :class="select=='qr-g'?'active':''"><qrgeView></qrgeView></div>
+            <div class="section" :class="select=='qr-de'?'active':''"><qrdeView></qrdeView></div>
         </div>
         </select>
     </div>
@@ -39,17 +39,19 @@
     import '../assets/css/style.css';
     //import '../assets/fa/css/font-awesome.css';
     import '../assets/fa/less/font-awesome.less';
-
+    import linksex from '../../source/openexlink.js';
     import config from '../assets/config';
-
     const log = config.log;
 
     export default {
         components: {
             "indexView": require('./index.vue'),
             "hashtxtView": require('./hash/txt.vue'),
+            "hashfileView": require('./hash/file.vue'),
             "mintxtView": require('./min/txt.vue'),
-            "minfileView":require('./min/file.vue')
+            "minfileView": require('./min/file.vue'),
+            "qrgeView": require('./qr/ge.vue'),
+            "qrdeView": require('./qr/decode.vue')
         },
         data() {
             return {
@@ -58,6 +60,7 @@
         },
         mounted() {
             log(this);
+            linksex.linksinit();
         },
         methods: {
             handleMenuSelect(i) {
