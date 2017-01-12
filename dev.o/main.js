@@ -11,14 +11,16 @@ const app = electron.app,
     ipc = electron.ipcMain;
 
 let mainWindow;
-var debug = false;
+var d;
 
-
-if (process && process.argv && process.argv.length) {
+try {
     let program = require('commander');
     program.version('0.2.0').option('-d, --development', 'Open development mode').parse(process.argv);
-    debug = program.development;
+    d = program.development;
+} catch (error) {
+    d = false;
 }
+const debug = d;
 
 function createWindow() {
     mainWindow = new BrowserWindow({ width: 880, height: 640 });

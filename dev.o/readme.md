@@ -8,14 +8,17 @@
 2. `npm run build` 
 3. `npm run package` 打包成win32、mac、linux应用，也可以使用 `npm run pack-win`,`npm run pack-mac`,`npm run pack-linux`分别打包成对应平台应用
 4. 其它: `npm run start` build后直接运行不用打包; `npm run devbuild &` 热更新开发构建，构建之后使用 `npm run devstart &` 运行，然后在菜单->view->reload查看页面热更新
+5. 其它2: 有的时候安装electron会有 `warn:cannot run in wd` 然后导致程序不能运行，可以使用 `npm run ele-install` 手动安装electron
+
 ***
+
 ### 目录:
 * `main.js`: 入口js
 * `index.html`: 主窗口
 * `process`: main-process文件夹，涉及后台功能，不会被webpack打包
-* `src`: render-process文件夹，前端功能
+* `src.o`: render-process文件夹，前端功能，不会被electron打包
 * `dev.o`: `npm run devbuild` 输出的文件夹，开发使用，不会被electron打包
-* `release`: `npm run build` 发布的文件夹
+* `release`: `npm run build` 命令通过webpack打包前端文件发布的文件夹
 * `out`: electron打包输出位置
 
 electron-packager参数请参考 

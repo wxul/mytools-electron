@@ -8,6 +8,7 @@
 2. `npm run build` 
 3. `npm run package` 打包成win32、mac、linux应用，也可以使用 `npm run pack-win`,`npm run pack-mac`,`npm run pack-linux`分别打包成对应平台应用
 4. 其它: `npm run start` build后直接运行不用打包; `npm run devbuild &` 热更新开发构建，构建之后使用 `npm run devstart &` 运行，然后在菜单->view->reload查看页面热更新
+5. 其它2: 有的时候安装electron会有 `warn:cannot run in wd` 然后导致程序不能运行，可以使用 `npm run ele-install` 手动安装electron
 
 ***
 

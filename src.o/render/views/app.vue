@@ -16,6 +16,9 @@
                     <el-menu-item index="qr-g"><i class="fa fa-qrcode fa-fw"></i> 生成</el-menu-item>
                     <el-menu-item index="qr-de"><i class="fa fa-picture-o fa-fw"></i> 解码</el-menu-item>
                 </el-menu-item-group>
+                <el-menu-item-group title="待定">
+                    <el-menu-item index="wating"><i class="fa fa-spinner fa-pulse fa-fw"></i> 嗷！</el-menu-item>
+                </el-menu-item-group>
             </el-menu>
             <footer>
                 <a class="about" href="#">关于</a>
@@ -30,6 +33,7 @@
             <div class="section" :class="select=='z-file'?'active':''"><minfileView></minfileView></div>
             <div class="section" :class="select=='qr-g'?'active':''"><qrgeView></qrgeView></div>
             <div class="section" :class="select=='qr-de'?'active':''"><qrdeView></qrdeView></div>
+            <div class="section" :class="select=='wating'?'active':''"><watingView></watingView></div>
         </div>
         </select>
     </div>
@@ -52,7 +56,8 @@
             "mintxtView": require('./min/txt.vue'),
             "minfileView": require('./min/file.vue'),
             "qrgeView": require('./qr/ge.vue'),
-            "qrdeView": require('./qr/decode.vue')
+            "qrdeView": require('./qr/decode.vue'),
+            "watingView": require('./other/wating.vue')
         },
         data() {
             return {
