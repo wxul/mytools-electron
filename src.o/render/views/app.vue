@@ -1,8 +1,8 @@
 <template>
     <div class="app">
         <div class="nav">
-            <header>Albert的工具们</header>
-            <el-menu mode="vertical" default-active="index" @select="handleMenuSelect">
+            <header>广告位招租 <i class="fa fa-spinner fa-pulse fa-fw"></i></header>
+            <el-menu mode="vertical" :default-active="select" @select="handleMenuSelect">
                 <el-menu-item index="index"><i class="fa fa-home fa-fw"></i> 主页</el-menu-item>
                 <el-menu-item-group title="HASH">
                     <el-menu-item index="h-txt"><i class="fa fa-file-text fa-fw"></i> 文本</el-menu-item>
@@ -42,6 +42,7 @@
     import linksex from '../../source/openexlink.js';
     import config from '../assets/config';
     const log = config.log;
+    const ipc = require('electron').ipcRenderer;
 
     export default {
         components: {
@@ -61,6 +62,9 @@
         mounted() {
             log(this);
             linksex.linksinit();
+            ipc.on("qr-screen-successed", (e) => {
+                this.select = "qr-de";
+            })
         },
         methods: {
             handleMenuSelect(i) {
@@ -83,7 +87,7 @@
             line-height: 36px;
         }
         .nav {
-            width: 200px;
+            width: 150px;
             overflow-x: hidden;
             overflow-y: auto;
             border-right: 1px solid #ccc;

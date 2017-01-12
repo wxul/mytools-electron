@@ -13,9 +13,9 @@
 * `main.js`: 入口js
 * `index.html`: 主窗口
 * `process`: main-process文件夹，涉及后台功能，不会被webpack打包
-* `src`: render-process文件夹，前端功能
+* `src.o`: render-process文件夹，前端功能，不会被electron打包
 * `dev.o`: `npm run devbuild` 输出的文件夹，开发使用，不会被electron打包
-* `release`: `npm run build` 发布的文件夹
+* `release`: `npm run build` 命令通过webpack打包前端文件发布的文件夹
 * `out`: electron打包输出位置
 
 electron-packager参数请参考 

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            font-size: 0;
+        }
+        
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="" id="img" />
+</body>
+<script>
+    const ipc = require('electron').ipcRenderer;
+    ipc.on("img-path", function(e, u) {
+        console.log(u);
+        document.getElementById('img').src = u.url;
+        document.title = u.name;
+    })
+</script>
+
+</html>

@@ -1,6 +1,5 @@
 const ipc = require('electron').ipcMain;
 const fs = require("fs");
-const path = require('path');
 
 ipc.on("save-file", function(e, options = { content: "hello!", filepath: "" }) {
     fs.exists(options.filepath, function() {
