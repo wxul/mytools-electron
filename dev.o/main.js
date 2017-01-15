@@ -23,7 +23,7 @@ try {
 const debug = d;
 
 function createWindow() {
-    mainWindow = new BrowserWindow({ width: 880, height: 640 });
+    mainWindow = new BrowserWindow({ width: 880, height: 700 });
     global.mainWindow = mainWindow;
 
     mainWindow.loadURL(url.format({

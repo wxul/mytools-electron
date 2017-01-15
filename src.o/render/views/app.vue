@@ -4,6 +4,14 @@
             <header>广告位招租 <i class="fa fa-spinner fa-pulse fa-fw"></i></header>
             <el-menu mode="vertical" :default-active="select" @select="handleMenuSelect">
                 <el-menu-item index="index"><i class="fa fa-home fa-fw"></i> 主页</el-menu-item>
+                <el-menu-item-group title="二维码">
+                    <el-menu-item index="qr-g"><i class="fa fa-qrcode fa-fw"></i> 生成</el-menu-item>
+                    <el-menu-item index="qr-de"><i class="fa fa-picture-o fa-fw"></i> 解码</el-menu-item>
+                </el-menu-item-group>
+                <el-menu-item-group title="RSS">
+                    <el-menu-item index="rss-a"><i class="fa fa-rss-square fa-fw"></i> 管理</el-menu-item>
+                    <el-menu-item index="rss-r"><i class="fa fa-rss fa-fw"></i> 阅读</el-menu-item>
+                </el-menu-item-group>
                 <el-menu-item-group title="HASH">
                     <el-menu-item index="h-txt"><i class="fa fa-file-text fa-fw"></i> 文本</el-menu-item>
                     <el-menu-item index="h-file"><i class="fa fa-file fa-fw"></i> 文件</el-menu-item>
@@ -11,10 +19,6 @@
                 <el-menu-item-group title="压缩">
                     <el-menu-item index="z-txt"><i class="fa fa-file-text-o fa-fw"></i> 文本</el-menu-item>
                     <el-menu-item index="z-file"><i class="fa fa-file-code-o fa-fw"></i> 文件</el-menu-item>
-                </el-menu-item-group>
-                <el-menu-item-group title="二维码">
-                    <el-menu-item index="qr-g"><i class="fa fa-qrcode fa-fw"></i> 生成</el-menu-item>
-                    <el-menu-item index="qr-de"><i class="fa fa-picture-o fa-fw"></i> 解码</el-menu-item>
                 </el-menu-item-group>
                 <el-menu-item-group title="待定">
                     <el-menu-item index="wating"><i class="fa fa-spinner fa-pulse fa-fw"></i> 嗷！</el-menu-item>
@@ -33,6 +37,8 @@
             <div class="section" :class="select=='z-file'?'active':''"><minfileView></minfileView></div>
             <div class="section" :class="select=='qr-g'?'active':''"><qrgeView></qrgeView></div>
             <div class="section" :class="select=='qr-de'?'active':''"><qrdeView></qrdeView></div>
+            <div class="section" :class="select=='rss-a'?'active':''"><rssadminView></rssadminView></div>
+            <div class="section" :class="select=='rss-r'?'active':''"><rssreadView></rssreadView></div>
             <div class="section" :class="select=='wating'?'active':''"><watingView></watingView></div>
         </div>
         </select>
@@ -57,6 +63,8 @@
             "minfileView": require('./min/file.vue'),
             "qrgeView": require('./qr/ge.vue'),
             "qrdeView": require('./qr/decode.vue'),
+            "rssadminView": require('./rss/admin.vue'),
+            "rssreadView": require('./rss/read.vue'),
             "watingView": require('./other/wating.vue')
         },
         data() {
@@ -144,7 +152,6 @@
             position: relative;
             overflow: hidden;
             .section {
-                padding-top: 10px;
                 position: absolute;
                 top: 0;
                 left: 0;
