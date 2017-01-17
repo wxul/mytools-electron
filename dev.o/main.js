@@ -13,6 +13,8 @@ const app = electron.app,
 let mainWindow;
 var d;
 
+//console.log(require("fluent-ffmpeg"));
+
 try {
     let program = require('commander');
     program.version('0.2.0').option('-d, --development', 'Open development mode').parse(process.argv);
@@ -89,6 +91,10 @@ app.on('will-quit', function() {
 function registershortcuts() {
     globalShortcut.register('CommandOrControl+Alt+Q', function() {
         mainWindow.webContents.send('print-screen-pressed');
+    })
+
+    globalShortcut.register('Alt+A', function() {
+        mainWindow.webContents.send('print-screen-color');
     })
 }
 

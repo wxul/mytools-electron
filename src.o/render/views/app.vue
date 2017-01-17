@@ -52,7 +52,11 @@
     import linksex from '../../source/openexlink.js';
     import config from '../assets/config';
     const log = config.log;
-    const ipc = require('electron').ipcRenderer;
+    const electron = require("electron");
+    const ipc = electron.ipcRenderer;
+    const desktopCapturer = electron.desktopCapturer;
+    const electronScreen = electron.screen;
+    const clipboard = electron.clipboard;
 
     export default {
         components: {
@@ -78,8 +82,40 @@
             ipc.on("qr-screen-successed", (e) => {
                 this.select = "qr-de";
             })
+
+            ipc.on("print-screen-color", e => {
+                this.screen = true;
+                var thumbSize = this.determineScreenShotSize();
+                var options = {
+                    types: ['screen'],
+                    thumbnailSize: thumbSize
+                };
+
+                desktopCapturer.getSources(options, (err, sources) => {
+                    if (err) return console.log(err)
+                    sources.forEach((s) => {
+                        if (s.name === 'Entire screen' || s.name === 'Screen 1') {
+                            var base64 = s.thumbnail.toDataURL();
+                            ipc.send("print-screen-image", base64);
+                        }
+                    })
+                });
+            });
+            ipc.on("printed-screen-color",(e,r)=>{
+                log(r);
+                clipboard.writeText(r);
+            })
         },
         methods: {
+            determineScreenShotSize() {
+                const screenSize = electronScreen.getPrimaryDisplay().workAreaSize;
+                console.log(electronScreen.getPrimaryDisplay())
+                const maxDimension = Math.max(screenSize.width, screenSize.height)
+                return {
+                    width: maxDimension * window.devicePixelRatio,
+                    height: maxDimension * window.devicePixelRatio
+                }
+            },
             handleMenuSelect(i) {
                 this.select = i;
             }

@@ -1,5 +1,5 @@
 <template>
-    <div class="rss-a">this is index!</div>
+    <div class="rss-a">还没做呢</div>
 </template>
 <script>
     import config from '../../assets/config';
