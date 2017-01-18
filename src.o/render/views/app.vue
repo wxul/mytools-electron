@@ -100,7 +100,7 @@
                     })
                 });
             });
-            ipc.on("printed-screen-color",(e,r)=>{
+            ipc.on("printed-screen-color", (e, r) => {
                 log(r);
                 clipboard.writeText(r);
             })
@@ -123,9 +123,68 @@
     }
 </script>
 <style lang="less">
+    /*scroll-bar*/
+    
+     ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+    
+     ::-webkit-scrollbar-track-piece {
+        background-color: transparent;
+    }
+    
+    body::-webkit-scrollbar-track-piece {
+        background-color: white;
+    }
+    
+     ::-webkit-scrollbar-track-piece:no-button {}
+    
+     ::-webkit-scrollbar-thumb {
+        background-color: #aaa;
+        border-radius: 3px;
+    }
+    
+     ::-webkit-scrollbar-thumb:hover {
+        background-color: #888;
+    }
+    
+     ::-webkit-scrollbar-thumb:active {
+        background-color: #666;
+    }
+    
+     ::-webkit-scrollbar-button {
+        display: none;
+    }
+    
+     ::-webkit-scrollbar-button:vertical {
+        width: 5px;
+    }
+    
+     ::-webkit-scrollbar-button:horizontal {
+        width: 54px;
+    }
+    
+     ::-webkit-scrollbar-button:vertical:start:decrement {
+        background-color: #d2d2d2;
+    }
+    
+     ::-webkit-scrollbar-button:vertical:end:increment {
+        background-color: #d2d2d2;
+    }
+    
+     ::-webkit-scrollbar-button:horizontal:start:decrement {
+        background-color: #d2d2d2;
+    }
+    
+     ::-webkit-scrollbar-button:horizontal:end:increment {
+        background-color: #d2d2d2;
+    }
+    
     .app {
         display: flex;
         min-height: 100%;
+        height: 100%;
         .el-menu-item-group__title {
             padding-bottom: 9px;
         }
@@ -135,6 +194,9 @@
             line-height: 36px;
         }
         .nav {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
             width: 150px;
             overflow-x: hidden;
             overflow-y: auto;
@@ -144,6 +206,8 @@
             border-right: 1px solid var(--color-border);
             background-color: var(--color-bg);
             .el-menu {
+                flex: 1;
+                overflow-y: auto;
                 background: none;
                 .el-menu-item {
                     transition-duration: .1s;
@@ -160,14 +224,13 @@
             }
             &>footer {
                 margin-top: 1rem;
-                padding: 2rem;
+                padding: 1rem;
                 border-top: 1px solid var(--color-border);
                 text-align: center;
                 &>a {
                     display: block;
                     width: 100%;
                     padding: 0;
-                    margin-bottom: .75rem;
                     line-height: 2;
                     font: inherit;
                     font-size: 13px;
