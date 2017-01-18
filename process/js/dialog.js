@@ -19,3 +19,7 @@ ipc.on('save-file-dialog', function(event, options = {
         if (filepath) event.sender.send('selected-save-directory', filepath)
     })
 })
+
+ipc.on("err-dialog", (e, o = { title: "error", txt: "ERROR!!" }) => {
+    dialog.showErrorBox(o.title, o.txt);
+})

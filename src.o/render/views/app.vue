@@ -9,8 +9,7 @@
                     <el-menu-item index="qr-de"><i class="fa fa-picture-o fa-fw"></i> 解码</el-menu-item>
                 </el-menu-item-group>
                 <el-menu-item-group title="RSS">
-                    <el-menu-item index="rss-a"><i class="fa fa-rss-square fa-fw"></i> 管理</el-menu-item>
-                    <el-menu-item index="rss-r"><i class="fa fa-rss fa-fw"></i> 阅读</el-menu-item>
+                    <el-menu-item index="rss-r"><i class="fa fa-rss-square fa-fw"></i> 阅读</el-menu-item>
                 </el-menu-item-group>
                 <el-menu-item-group title="HASH">
                     <el-menu-item index="h-txt"><i class="fa fa-file-text fa-fw"></i> 文本</el-menu-item>
@@ -37,7 +36,7 @@
             <div class="section" :class="select=='z-file'?'active':''"><minfileView></minfileView></div>
             <div class="section" :class="select=='qr-g'?'active':''"><qrgeView></qrgeView></div>
             <div class="section" :class="select=='qr-de'?'active':''"><qrdeView></qrdeView></div>
-            <div class="section" :class="select=='rss-a'?'active':''"><rssadminView></rssadminView></div>
+            
             <div class="section" :class="select=='rss-r'?'active':''"><rssreadView></rssreadView></div>
             <div class="section" :class="select=='wating'?'active':''"><watingView></watingView></div>
         </div>
