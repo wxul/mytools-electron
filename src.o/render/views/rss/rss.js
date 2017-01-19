@@ -7,12 +7,9 @@ const ipc = electron.ipcRenderer;
 var rsslist = [];
 
 function getList(cb) {
-    ipc.send("rss-require");
-    ipc.on("rss-required-list", (e, list) => {
-        log(list);
-        rsslist = list;
-        typeof cb == "function" && cb(list);
-    })
+    var result = ipc.sendSync("rss-require");
+    rsslist = result;
+    typeof cb == "function" && cb(result);
 }
 
 /*

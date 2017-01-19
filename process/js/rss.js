@@ -250,8 +250,9 @@ var rss = [{
 
 ipc.on("rss-require", (e) => {
     var result = JSON.parse(fs.readFileSync(rsspath));
-    //console.log(rsslist);
-    e.sender.send("rss-required-list", result);
+    //console.log(result);
+    e.returnValue = result;
+    //e.sender.send("rss-required-list", result);
 });
 //console.log(rsspath);
 //fs.writeFileSync(rsspath, JSON.stringify(rss));

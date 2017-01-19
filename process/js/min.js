@@ -10,8 +10,7 @@ ipc.on("txt-zip", function(e, m) {
     } catch (error) {
         code = "不支持的转换";
     }
-
-    e.sender.send("txt-zipped", code);
+    e.returnValue = code;
 });
 
 ipc.on("file-zip", function(e, m = []) {
@@ -19,9 +18,7 @@ ipc.on("file-zip", function(e, m = []) {
     if (m.length > 0) {
         try {
             code = ug.minify(m).code;
-        } catch (error) {
-        }
+        } catch (error) {}
     }
-    e.sender.send("file-zipped", code);
+    e.returnValue = code;
 })
-

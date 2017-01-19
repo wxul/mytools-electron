@@ -120,14 +120,10 @@
                     return e.path
                 });
                 console.log(f);
-                //this.onSubmit(this.files);
-                ipc.on("file-zipped", (e, m) => {
-                    this.iszip = false;
-                    this.onSuccess(m);
-                });
                 this.iszip = true;
-                ipc.send("file-zip", f);
-
+                var r = ipc.send("file-zip", f);
+                this.iszip = false;
+                this.onSuccess(r);
             }
         }
     };

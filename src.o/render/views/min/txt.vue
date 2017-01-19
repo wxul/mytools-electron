@@ -37,19 +37,16 @@
         },
         methods: {
             onSubmit() {
-                ipc.on("txt-zipped", (e, m) => {
-                    log(m);
-                    this.form.min = m;
-                });
-                ipc.send("txt-zip", this.form.text);
-                //this.form.min = min.txt(this.form.text);
+                var r = ipc.sendSync("txt-zip", this.form.text);
+                log(r);
+                this.form.min = r;
             }
         }
     }
 </script>
 
 <style>
-    .min-txt{
+    .min-txt {
         padding-top: 20px;
     }
 </style>
