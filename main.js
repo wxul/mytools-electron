@@ -6,6 +6,7 @@ const electron = require('electron');
 const req = require("request");
 const Menu = electron.Menu;
 const MenuItem = electron.MenuItem;
+const autoUpdater = require('./auto-updater');
 
 const app = electron.app,
     BrowserWindow = electron.BrowserWindow,
@@ -72,7 +73,10 @@ function createWindow() {
     registershortcuts();
 }
 
-app.on('ready', createWindow);
+app.on('ready', function() {
+    createWindow();
+    autoUpdater.initialize();
+});
 
 app.on("window-all-closed", () => {
     if (process.platform !== "darwin") {
