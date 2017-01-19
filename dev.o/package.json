@@ -1,7 +1,7 @@
 {
     "name": "mytools-electron",
     "productName": "Tools",
-    "version": "0.9.1",
+    "version": "0.9.3",
     "description": "Some Tools By Albert",
     "main": "main.js",
     "scripts": {

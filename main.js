@@ -6,7 +6,7 @@ const electron = require('electron');
 const req = require("request");
 const Menu = electron.Menu;
 const MenuItem = electron.MenuItem;
-const autoUpdater = require('./auto-updater');
+const autoUpdater = require('./autoupdate');
 
 const app = electron.app,
     BrowserWindow = electron.BrowserWindow,
