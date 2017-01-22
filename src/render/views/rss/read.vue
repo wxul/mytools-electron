@@ -124,20 +124,18 @@
                 var cat = {};
                 this.rsss.forEach((e, i) => {
                     var f = e.file;
-                    if (!f) {
-                        f = "_nonefile_";
-                    }
                     if (!(f in cat)) {
                         cat[f] = [];
-                        t.push(f == '_nonefile_' ? {
-                            n: "无",
-                            v: ""
-                        } : {
+                        t.push({
                             n: f,
                             v: f
                         });
                     }
                     //cat[f].push(e);
+                });
+                t.push({
+                    n: "无",
+                    v: ""
                 });
                 return t;
             },
@@ -146,7 +144,7 @@
                 var cat = {};
                 this.rsss.forEach((e, i) => {
                     var f = e.file;
-                    if (!f) {
+                    if (!f || f=='无') {
                         f = "_nonefile_";
                     }
                     if (!(f in cat)) {

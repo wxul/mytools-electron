@@ -2,13 +2,13 @@ var path = require('path');
 var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var APP_PATH = path.resolve(__dirname, 'release');
-var SRC_PATH = path.resolve(__dirname, 'src.o');
+var SRC_PATH = path.resolve(__dirname, 'src');
 
 var ex = {
     cache: true,
     target: 'electron',
     entry: {
-        app: './src.o/render/app.js'
+        app: './src/render/app.js'
     },
     output: {
         path: APP_PATH,
@@ -37,13 +37,13 @@ var ex = {
             test: /\.(otf|eot|svg|ttf|woff|woff2)(\?\S*)?$/,
             loader: 'file-loader?name=[name].[hash:8].[ext]'
         }, {
-            test: require.resolve("./src.o/source/llqrcode.js"),
+            test: require.resolve("./src/source/llqrcode.js"),
             loader: "exports?qrcode"
         }, {
-            test: require.resolve("./src.o/source/qrcanvas.js"),
+            test: require.resolve("./src/source/qrcanvas.js"),
             loader: "exports?createQRImage"
         }, {
-            test: require.resolve("./src.o/source/qrcode.js"),
+            test: require.resolve("./src/source/qrcode.js"),
             loader: "exports?QRCode&QRErrorCorrectLevel"
         }]
     },

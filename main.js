@@ -6,7 +6,7 @@ const electron = require('electron');
 const req = require("request");
 const Menu = electron.Menu;
 const MenuItem = electron.MenuItem;
-const autoUpdater = require('./autoupdate');
+const autoUpdater = require('./process/autoupdate');
 
 const app = electron.app,
     BrowserWindow = electron.BrowserWindow,
@@ -14,21 +14,11 @@ const app = electron.app,
     ipc = electron.ipcMain;
 
 let mainWindow;
-var d;
 
-//console.log(require("fluent-ffmpeg"));
-
-try {
-    let program = require('commander');
-    program.version('0.2.0').option('-d, --development', 'Open development mode').parse(process.argv);
-    d = program.development;
-} catch (error) {
-    d = false;
-}
-const debug = d;
+const debug = process.env.NODE_ENV == "development";
 
 function createWindow() {
-    mainWindow = new BrowserWindow({ width: 880, height: 700 });
+    mainWindow = new BrowserWindow({ width: 880, height: 740 });
     global.mainWindow = mainWindow;
 
     mainWindow.loadURL(url.format({
@@ -75,7 +65,9 @@ function createWindow() {
 
 app.on('ready', function() {
     createWindow();
-    //autoUpdater.initialize();
+    if (!debug) {
+        //autoUpdater.initialize();
+    }
 });
 
 app.on("window-all-closed", () => {

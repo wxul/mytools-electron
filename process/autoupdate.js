@@ -1,13 +1,12 @@
 const app = require('electron').app;
 const dialog = require('electron').dialog;
 const autoUpdater = require('electron').autoUpdater;
-const appVersion = require('./package.json').version;
 const os = require('os');
 
 exports.initialize = function() {
-    console.log(os.platform());
     var ostype = os.platform();
-    var feed = ostype === 'darwin' ? "http://api.amayading.com/mac/version" : "";
+    if (ostype === 'darwin') return; //dmg需要developerID才能自动更新
+    var feed = ostype === 'darwin' ? "http://api.amayading.com/mac/version" : "http://eleupdate.amayading.com/win";
 
     autoUpdater.on("update-downloaded", function() {
         dialog.showMessageBox({
@@ -22,6 +21,9 @@ exports.initialize = function() {
         })
 
     })
-    autoUpdater.setFeedURL(`${feed}?v=${appVersion}`);
+    autoUpdater.on('error', function() {
+        dialog.showErrorBox('An Error Message', 'Demonstrating an error message.')
+    })
+    autoUpdater.setFeedURL(`${feed}?v=${app.getVersion()}`);
     autoUpdater.checkForUpdates();
 }

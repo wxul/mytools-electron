@@ -1,7 +1,7 @@
 node_modules
 .vscode
 npm-debug.log
-dev.o
+dev
 release
 out
 dist

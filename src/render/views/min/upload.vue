@@ -121,7 +121,7 @@
                 });
                 console.log(f);
                 this.iszip = true;
-                var r = ipc.send("file-zip", f);
+                var r = ipc.sendSync("file-zip", f);
                 this.iszip = false;
                 this.onSuccess(r);
             }

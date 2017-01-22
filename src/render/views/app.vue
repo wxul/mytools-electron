@@ -8,16 +8,13 @@
                     <el-menu-item index="qr-g"><i class="fa fa-qrcode fa-fw"></i> 生成</el-menu-item>
                     <el-menu-item index="qr-de"><i class="fa fa-picture-o fa-fw"></i> 解码</el-menu-item>
                 </el-menu-item-group>
-                <el-menu-item-group title="RSS">
-                    <el-menu-item index="rss-r"><i class="fa fa-rss-square fa-fw"></i> 阅读</el-menu-item>
+                <el-menu-item-group title="信息">
+                    <el-menu-item index="rss-r"><i class="fa fa-rss-square fa-fw"></i> RSS</el-menu-item>
+                    <el-menu-item index="email-a"><i class="fa fa-envelope fa-fw"></i> 邮箱</el-menu-item>
                 </el-menu-item-group>
-                <el-menu-item-group title="HASH">
-                    <el-menu-item index="h-txt"><i class="fa fa-file-text fa-fw"></i> 文本</el-menu-item>
-                    <el-menu-item index="h-file"><i class="fa fa-file fa-fw"></i> 文件</el-menu-item>
-                </el-menu-item-group>
-                <el-menu-item-group title="压缩">
-                    <el-menu-item index="z-txt"><i class="fa fa-file-text-o fa-fw"></i> 文本</el-menu-item>
-                    <el-menu-item index="z-file"><i class="fa fa-file-code-o fa-fw"></i> 文件</el-menu-item>
+                <el-menu-item-group title="HASH与压缩">
+                    <el-menu-item index="hash"><i class="fa fa-file-text fa-fw"></i> HASH</el-menu-item>
+                    <el-menu-item index="min"><i class="fa fa-file-code-o fa-fw"></i> JS压缩</el-menu-item>
                 </el-menu-item-group>
                 <el-menu-item-group title="待定">
                     <el-menu-item index="wating"><i class="fa fa-spinner fa-pulse fa-fw"></i> 嗷！</el-menu-item>
@@ -30,14 +27,12 @@
         </div>
         <div class="main" id="main">
             <div class="section" :class="select=='index'?'active':''"><indexView></indexView></div>
-            <div class="section" :class="select=='h-txt'?'active':''"><hashtxtView></hashtxtView></div>
-            <div class="section" :class="select=='h-file'?'active':''"><hashfileView></hashfileView></div>
-            <div class="section" :class="select=='z-txt'?'active':''"><mintxtView></mintxtView></div>
-            <div class="section" :class="select=='z-file'?'active':''"><minfileView></minfileView></div>
+            <div class="section" :class="select=='hash'?'active':''"><hashView></hashView></div>
+            <div class="section" :class="select=='min'?'active':''"><minView></minView></div>
             <div class="section" :class="select=='qr-g'?'active':''"><qrgeView></qrgeView></div>
             <div class="section" :class="select=='qr-de'?'active':''"><qrdeView></qrdeView></div>
-            
             <div class="section" :class="select=='rss-r'?'active':''"><rssreadView></rssreadView></div>
+            <div class="section" :class="select=='email-a'?'active':''"><emailadminView></emailadminView></div>
             <div class="section" :class="select=='wating'?'active':''"><watingView></watingView></div>
         </div>
         </select>
@@ -60,14 +55,12 @@
     export default {
         components: {
             "indexView": require('./index.vue'),
-            "hashtxtView": require('./hash/txt.vue'),
-            "hashfileView": require('./hash/file.vue'),
-            "mintxtView": require('./min/txt.vue'),
-            "minfileView": require('./min/file.vue'),
+            "hashView": require('./hash/hash.vue'),
+            "minView": require('./min/min.vue'),
             "qrgeView": require('./qr/ge.vue'),
             "qrdeView": require('./qr/decode.vue'),
-            "rssadminView": require('./rss/admin.vue'),
             "rssreadView": require('./rss/read.vue'),
+            "emailadminView": require('./email/email.vue'),
             "watingView": require('./other/wating.vue')
         },
         data() {
