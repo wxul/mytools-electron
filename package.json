@@ -1,7 +1,7 @@
 {
   "name": "mytools-electron",
   "productName": "Tools",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "Some Tools By Albert",
   "main": "main.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "devbuild": "webpack --config ./webpack.config.dev.js --watch",
     "build": "webpack --config ./webpack.config.build.js",
     "start": "cross-env NODE_ENV=development electron .",
-    "pack-win": "electron-packager . coooooool --platform=win32 --arch=ia32 --overwrite --out=out --ignore=\"(/scripts)|(/dist)|(/dev)|(/src)|(/\\.vscode)(/|$)\" --prune=true --version-string.CompanyName=Albert --version-string.ProductName=Tools --download.mirror=https://npm.taobao.org/mirrors/electron/",
+    "pack-win": "electron-packager . coooooool --platform=win32 --arch=ia32 --overwrite --out=out --ignore=\"(/scripts)|(/dist)|(/dev)|(/src)|(/\\.vscode)(/|$)\" --icon=app-icon/win/app.ico --prune=true --version-string.CompanyName=Albert --version-string.ProductName=Tools --download.mirror=https://npm.taobao.org/mirrors/electron/",
     "pack-mac": "electron-packager . coooooool --platform=darwin --arch=x64 --overwrite --out=out --ignore=\"(/scripts)|(/dist)|(/dev)|(/src)|(/\\.vscode)(/|$)\" --prune=true --download.mirror=https://npm.taobao.org/mirrors/electron/",
     "pack-linux": "electron-packager . coooooool --platform=linux --arch=x64 --overwrite --out=out --ignore=\"(/scripts)|(/dist)|(/dev)|(/src)|(/\\.vscode)(/|$)\" --prune=true --download.mirror=https://npm.taobao.org/mirrors/electron/",
     "package": "npm run pack-mac && npm run pack-win && npm run pack-linux",
