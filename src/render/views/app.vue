@@ -174,6 +174,10 @@
         background-color: #d2d2d2;
     }
     
+    .el-upload {
+        -webkit-user-drag: auto;
+    }
+    
     .app {
         display: flex;
         min-height: 100%;
