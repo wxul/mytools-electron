@@ -15,7 +15,8 @@
     "pack-mac": "electron-packager . coooooool --platform=darwin --arch=x64 --overwrite --out=out --ignore=\"(/scripts)|(/dist)|(/dev)|(/src)|(/\\.vscode)(/|$)\" --prune=true --download.mirror=https://npm.taobao.org/mirrors/electron/",
     "pack-linux": "electron-packager . coooooool --platform=linux --arch=x64 --overwrite --out=out --ignore=\"(/scripts)|(/dist)|(/dev)|(/src)|(/\\.vscode)(/|$)\" --prune=true --download.mirror=https://npm.taobao.org/mirrors/electron/",
     "package": "npm run pack-mac && npm run pack-win && npm run pack-linux",
-    "win-install": "node ./scripts/wininstaller.js"
+    "win-install": "node ./scripts/wininstaller.js",
+    "dmg-install": "node ./scripts/dmg.js"
   },
   "build": {
     "appId": "com.electron.albert.tools",
@@ -79,7 +80,7 @@
     "stylus-loader": "^2.4.0",
     "url-loader": "^0.5.7",
     "vue": "^2.1.8",
-    "vue-color": "^2.0.3",
+    "vue-color": "2.0.3",
     "vue-html-loader": "^1.2.3",
     "vue-loader": "^10.0.2",
     "vue-style-loader": "^1.0.0",
