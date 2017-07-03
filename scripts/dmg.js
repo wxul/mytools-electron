@@ -1,8 +1,10 @@
 const createDMG = require('electron-installer-dmg');
 const path = require('path')
 const rimraf = require('rimraf')
+var fs = require('fs')
 
 deleteOutputFolder()
+    .then(createFolder)
     .then(getInstallerConfig)
     .then((a, b) => {
         createDMG(a, function done(err) {
@@ -32,6 +34,14 @@ function deleteOutputFolder() {
     return new Promise((resolve, reject) => {
         rimraf(path.join(__dirname, '..', 'out', 'dmg-installer'), (error) => {
             error ? reject(error) : resolve()
+        })
+    })
+}
+
+function createFolder() {
+    return new Promise((resolve, reject) => {
+        fs.mkdir(path.join(__dirname, '..', 'out', 'dmg-installer'), 0777, function(err) {
+            err ? reject(err) : resolve()
         })
     })
 }

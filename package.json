@@ -12,10 +12,11 @@
     "build": "webpack --config ./webpack.config.build.js",
     "start": "cross-env NODE_ENV=development electron .",
     "pack-win": "electron-packager . coooooool --platform=win32 --arch=ia32 --overwrite --out=out --ignore=\"(/scripts)|(/dist)|(/dev)|(/src)|(/\\.vscode)(/|$)\" --icon=app-icon/win/app.ico --prune=true --version-string.CompanyName=Albert --version-string.ProductName=Tools --download.mirror=https://npm.taobao.org/mirrors/electron/",
-    "pack-mac": "electron-packager . coooooool --platform=darwin --arch=x64 --overwrite --out=out --ignore=\"(/scripts)|(/dist)|(/dev)|(/src)|(/\\.vscode)(/|$)\" --prune=true --download.mirror=https://npm.taobao.org/mirrors/electron/",
-    "pack-linux": "electron-packager . coooooool --platform=linux --arch=x64 --overwrite --out=out --ignore=\"(/scripts)|(/dist)|(/dev)|(/src)|(/\\.vscode)(/|$)\" --prune=true --download.mirror=https://npm.taobao.org/mirrors/electron/",
+    "pack-mac": "electron-packager . coooooool --platform=darwin --arch=x64 --overwrite --out=out --ignore=\"(/scripts)|(/dist)|(/dev)|(/src)|(/\\.vscode)(/|$)\" --icon=app-icon/mac/app.icns --prune=true --download.mirror=https://npm.taobao.org/mirrors/electron/",
+    "pack-linux": "electron-packager . coooooool --platform=linux --arch=x64 --overwrite --out=out --ignore=\"(/scripts)|(/dist)|(/dev)|(/src)|(/\\.vscode)(/|$)\" --icon=app-icon/win/app.ico --prune=true --download.mirror=https://npm.taobao.org/mirrors/electron/",
     "package": "npm run pack-mac && npm run pack-win && npm run pack-linux",
-    "win-install": "node ./scripts/wininstaller.js"
+    "win-install": "node ./scripts/wininstaller.js",
+    "dmg-install": "node ./scripts/dmg.js"
   },
   "build": {
     "appId": "com.electron.albert.tools",
